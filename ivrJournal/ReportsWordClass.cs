@@ -6,7 +6,6 @@ using System.IO;
 using Microsoft.Win32;
 using Word = Microsoft.Office.Interop.Word;
 using System.Windows.Forms;
-//using Word;
 
 namespace ivrJournal
 {
@@ -1006,13 +1005,6 @@ namespace ivrJournal
             Object visible = true;
             worddocument = wordapp.Documents.Add(ref template, ref newTemplate, ref documentType, ref visible);
 
-            //            wordapp.Documents.Add(ref template, ref newTemplate, ref documentType, ref visible);
-            //            template = @"C:\a1.doc";
-            //            wordapp.Documents.Add(
-            //            ref template, ref newTemplate, ref documentType, ref visible);
-            //           worddocuments = wordapp.Documents;
-            //            Object name = "Документ1";
-            //            worddocument = (Word.Document)worddocuments.get_Item(ref name);
             worddocument.Activate();
 
             object oMissing = System.Reflection.Missing.Value;
