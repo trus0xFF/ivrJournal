@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetBandP" targetNamespace="http://tempuri.org/DataSetBandP.xsd" xmlns:mstns="http://tempuri.org/DataSetBandP.xsd" xmlns="http://tempuri.org/DataSetBandP.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetBandP" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSetBandP" msprop:Generator_DataSetName="DataSetBandP">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTableBonus" msprop:Generator_UserTableName="DataTableBonus" msprop:Generator_RowDeletedName="DataTableBonusRowDeleted" msprop:Generator_RowChangedName="DataTableBonusRowChanged" msprop:Generator_RowClassName="DataTableBonusRow" msprop:Generator_RowChangingName="DataTableBonusRowChanging" msprop:Generator_RowEvArgName="DataTableBonusRowChangeEvent" msprop:Generator_RowEvHandlerName="DataTableBonusRowChangeEventHandler" msprop:Generator_TableClassName="DataTableBonusDataTable" msprop:Generator_TableVarName="tableDataTableBonus" msprop:Generator_RowDeletingName="DataTableBonusRowDeleting" msprop:Generator_TablePropName="DataTableBonus">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numberpp" msprop:Generator_UserColumnName="numberpp" msprop:Generator_ColumnPropNameInRow="numberpp" msprop:Generator_ColumnVarNameInTable="columnnumberpp" msprop:Generator_ColumnPropNameInTable="numberppColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="date_bonus" msprop:Generator_UserColumnName="date_bonus" msprop:Generator_ColumnPropNameInRow="date_bonus" msprop:Generator_ColumnVarNameInTable="columndate_bonus" msprop:Generator_ColumnPropNameInTable="date_bonusColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="bonus_reason" msprop:Generator_UserColumnName="bonus_reason" msprop:Generator_ColumnPropNameInRow="bonus_reason" msprop:Generator_ColumnVarNameInTable="columnbonus_reason" msprop:Generator_ColumnPropNameInTable="bonus_reasonColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="bonus_type" msprop:Generator_UserColumnName="bonus_type" msprop:Generator_ColumnPropNameInRow="bonus_type" msprop:Generator_ColumnVarNameInTable="columnbonus_type" msprop:Generator_ColumnPropNameInTable="bonus_typeColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTablePenalty" msprop:Generator_UserTableName="DataTablePenalty" msprop:Generator_RowDeletedName="DataTablePenaltyRowDeleted" msprop:Generator_RowChangedName="DataTablePenaltyRowChanged" msprop:Generator_RowClassName="DataTablePenaltyRow" msprop:Generator_RowChangingName="DataTablePenaltyRowChanging" msprop:Generator_RowEvArgName="DataTablePenaltyRowChangeEvent" msprop:Generator_RowEvHandlerName="DataTablePenaltyRowChangeEventHandler" msprop:Generator_TableClassName="DataTablePenaltyDataTable" msprop:Generator_TableVarName="tableDataTablePenalty" msprop:Generator_RowDeletingName="DataTablePenaltyRowDeleting" msprop:Generator_TablePropName="DataTablePenalty">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numberpp" msprop:Generator_UserColumnName="numberpp" msprop:Generator_ColumnPropNameInRow="numberpp" msprop:Generator_ColumnVarNameInTable="columnnumberpp" msprop:Generator_ColumnPropNameInTable="numberppColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="date_penalty" msprop:Generator_UserColumnName="date_penalty" msprop:Generator_ColumnPropNameInRow="date_penalty" msprop:Generator_ColumnVarNameInTable="columndate_penalty" msprop:Generator_ColumnPropNameInTable="date_penaltyColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="reason" msprop:Generator_UserColumnName="reason" msprop:Generator_ColumnPropNameInRow="reason" msprop:Generator_ColumnVarNameInTable="columnreason" msprop:Generator_ColumnPropNameInTable="reasonColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="penalty_type" msprop:Generator_UserColumnName="penalty_type" msprop:Generator_ColumnPropNameInRow="penalty_type" msprop:Generator_ColumnVarNameInTable="columnpenalty_type" msprop:Generator_ColumnPropNameInTable="penalty_typeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="removal" msprop:Generator_UserColumnName="removal" msprop:Generator_ColumnPropNameInRow="removal" msprop:Generator_ColumnVarNameInTable="columnremoval" msprop:Generator_ColumnPropNameInTable="removalColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,370 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Forms;
+using System.Data;
+using System.Data.OleDb;
+using Microsoft.Win32;
+
+namespace ivrJournal
+{
+    class SQLDBConnect
+    {
+        private DataSet sprSet;
+        private OleDbConnection OleDbCon;
+        private OleDbDataAdapter dataAdapter;
+        const String DataProvider = @"Microsoft.Jet.OLEDB.4.0";
+        Dictionary<String, OleDbDataAdapter> da;
+
+        //public SQLDBConnect(String tableName, String stringSQL)
+        public SQLDBConnect()
+        {
+
+            OleDbConnectionStringBuilder bldr = new OleDbConnectionStringBuilder();
+
+            bldr.DataSource = IVRShared.GetDBPath();
+            bldr.Provider = DataProvider; // Указываем провайдера
+
+            bldr.Add("Jet OLEDB:Database Password", "ivr32a");
+
+            OleDbCon = new OleDbConnection(bldr.ConnectionString);
+
+            //dataAdapter = new OleDbDataAdapter();
+            da = new Dictionary<string,OleDbDataAdapter>();
+
+            sprSet = new DataSet();
+        }
+
+        public Boolean DBConCheckBool()
+        {
+            try
+            {
+                OleDbCon.Open();
+                OleDbCon.Close();
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+        public DataTable GetDataTable(String tableName)
+        {
+            if (sprSet.Tables.Contains(tableName))
+                return sprSet.Tables[tableName];
+            return null;
+        }
+        public DataTable GetDataTable(String tableName, String stringSQL)
+        {
+            try
+            {
+                OleDbCon.Open();
+
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandText = @"" + stringSQL + ""; // Задаем оператор SQL
+                cmd.Connection = OleDbCon; // Задаем источник данных
+
+                // Объект OleDbDataAdapter выполняет функцию моста между DataTable и источником данных.
+                //OleDbDataAdapter dataAdapter = new OleDbDataAdapter();
+                if (!da.ContainsKey(tableName))
+                    da[tableName] = new OleDbDataAdapter();
+
+                dataAdapter = da[tableName];
+                dataAdapter.SelectCommand = cmd;
+
+                OleDbCommandBuilder builder = new OleDbCommandBuilder(dataAdapter);
+
+                if (sprSet.Tables.Contains(tableName))
+                    sprSet.Tables[tableName].Clear();
+
+                dataAdapter.Fill(sprSet, tableName);
+                
+                dataAdapter.RowUpdated += new OleDbRowUpdatedEventHandler(OnRowUpdated);
+
+                OleDbCon.Close();
+
+                return sprSet.Tables[tableName];
+            }
+            catch (Exception e)
+            {
+                OleDbCon.Close();
+                MessageBox.Show(e.Message, "Ошибка");
+                return null;
+            }
+        }
+
+        public void UpdateDataTable(String tableName)
+        {
+            try
+            {
+                if (!sprSet.Tables.Contains(tableName))
+                    return;
+
+                OleDbCon.Open();
+
+                if (!da.ContainsKey(tableName))
+                    return;
+
+                dataAdapter = da[tableName];
+
+                //dataAdapter.RowUpdated += new OleDbRowUpdatedEventHandler(OnRowUpdated);
+                //dataAdapter.RowUpdating += new OleDbRowUpdatingEventHandler(dataAdapter_RowUpdating);
+
+                //                OleDbCommandBuilder builder = new OleDbCommandBuilder(dataAdapter);
+
+                //MessageBox.Show( dataAdapter.UpdateCommand.CommandText );
+
+                int count = dataAdapter.Update(sprSet, tableName);
+                //MessageBox.Show("Загружено (обновлено) записей: " + count.ToString());
+
+                OleDbCon.Close();
+
+            }
+            catch (Exception e)
+            {
+                OleDbCon.Close();
+                MessageBox.Show(e.Message, "Ошибка");
+            }
+        }
+
+        public DataTable RefreshDataTable(String tableName)
+        {
+            try
+            {
+                if (!sprSet.Tables.Contains(tableName))
+                    return null;
+                
+                OleDbCon.Open();
+
+                if (!da.ContainsKey(tableName))
+                    return null;
+
+                dataAdapter = da[tableName];
+                
+                sprSet.Tables[tableName].Clear();
+
+                dataAdapter.Fill(sprSet, tableName);
+
+                OleDbCon.Close();
+
+                return sprSet.Tables[tableName];
+
+            } catch(Exception e)
+            {
+                OleDbCon.Close();
+                MessageBox.Show(e.Message, "Ошибка");
+                return null;
+            }
+        }
+/*
+        private void dataAdapter_RowUpdating(object sender, OleDbRowUpdatingEventArgs e)
+        {
+            MessageBox.Show(e.Command.CommandText.ToString());
+        }
+*/
+        private void OnRowUpdated(object sender, OleDbRowUpdatedEventArgs e)
+        {
+
+            //MessageBox.Show("Загружено (обновлено) записей: " + e.RecordsAffected.ToString() + " " +e.TableMapping.SourceTable + e.Status.ToString());
+
+            if (e.RecordsAffected == 0)
+            {
+                e.Row.RowError = "Обнаружено нарушение оптимистичного параллелизма";
+                e.Status = UpdateStatus.SkipCurrentRow;
+                MessageBox.Show(e.Errors.Message);
+                return;
+            }
+
+            // Conditionally execute this code block on inserts only.
+            if (e.StatementType == StatementType.Insert)
+            {
+                //MessageBox.Show(e.Command.CommandText.ToString());
+                OleDbCommand cmdNewID = new OleDbCommand("SELECT @@IDENTITY", OleDbCon);
+                // Retrieve the Autonumber and store it in the CategoryID column.
+                e.Row["id"] = (int)cmdNewID.ExecuteScalar();
+                e.Status = UpdateStatus.SkipCurrentRow;
+            }
+
+            if (e.Status == UpdateStatus.ErrorsOccurred)
+                MessageBox.Show(e.Errors.Message);
+        }
+
+
+        public DataRow GetDataRow(int rowIndex, String tableName, String stringSQL)
+        {
+            DataTable dt = GetDataTable(tableName, stringSQL);
+            return dt.Rows[rowIndex];
+        }
+
+
+        public void DoQuery(String stringSQL)
+        {
+            try
+            {
+                OleDbCon.Open();
+
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandText = @"" + stringSQL + ""; 
+                cmd.Connection = OleDbCon;
+
+                cmd.ExecuteNonQuery();
+
+                OleDbCon.Close();
+            }
+            catch (Exception e)
+            {
+                OleDbCon.Close();
+                MessageBox.Show(e.Message, "Ошибка");
+                return;
+            }
+
+        }
+
+        public String GetSystemValue(String sysPrm)
+        {
+            try
+            {
+                DataSet sprSetSystem = new DataSet();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandText = @"SELECT * FROM system WHERE name='" + sysPrm + "'";
+                cmd.Connection = OleDbCon;
+
+                OleDbDataAdapter daSystem = new OleDbDataAdapter();
+                daSystem.SelectCommand = cmd;
+
+                OleDbCon.Open();
+                daSystem.Fill(sprSetSystem, "system");
+                OleDbCon.Close();
+
+                if (sprSetSystem.Tables["system"].Rows.Count == 0)
+                    return null;
+                else
+                    return sprSetSystem.Tables["system"].Rows[0]["system_value"].ToString();
+            }
+            catch (Exception e)
+            {
+                OleDbCon.Close();
+                MessageBox.Show(e.Message, "Ошибка");
+                return null;
+            }
+
+        }
+
+        public String GetValue(String stringValue, String stringSQL)
+        {
+            String result = String.Empty;
+            try
+            {
+                DataSet sprSet = new DataSet();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandText = @stringSQL;
+                cmd.Connection = OleDbCon;
+
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter();
+                dataAdapter.SelectCommand = cmd;
+
+//                if (sprSet.Tables.Contains("tmp"))
+//                    sprSet.Tables["tmp"].Clear();                    
+
+                OleDbCon.Open();
+                dataAdapter.Fill(sprSet, "tmp");
+                OleDbCon.Close();
+
+                foreach (DataRow row in sprSet.Tables["tmp"].Rows)
+                {
+                    if (row[stringValue] == null)
+                        continue;
+                    result = row[stringValue].ToString();
+                }
+                return result;
+                /*
+                if (sprSet.Tables["tmp"].Rows.Count == 0)
+                    return null;
+                else
+                    return sprSet.Tables["tmp"].Rows[0][stringValue].ToString();
+                 */
+            }
+            catch (Exception e)
+            {
+                OleDbCon.Close();
+                MessageBox.Show(e.Message, "Ошибка");
+                return result;
+            }
+
+        }
+
+        public DataRow GetUser(String login)
+        {
+            DataRow rowResult = null;
+
+            try
+            {
+                OleDbCon.Open();
+
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandText = @"SELECT * FROM users WHERE login='" + login + "'";
+                cmd.Connection = OleDbCon;
+
+                da["users"] = new OleDbDataAdapter();
+                dataAdapter = da["users"];
+                //OleDbDataAdapter dataAdapter = new OleDbDataAdapter();
+                dataAdapter.SelectCommand = cmd;
+
+//                OleDbCommandBuilder builder = new OleDbCommandBuilder(dataAdapter);
+
+                dataAdapter.Fill(sprSet, "users");
+
+                OleDbCon.Close();
+
+                if (sprSet.Tables["users"].Rows.Count == 0)
+                    return rowResult;
+                rowResult = sprSet.Tables["users"].Rows[0];
+
+            }
+            catch (Exception e)
+            {
+                OleDbCon.Close();
+                MessageBox.Show(e.Message, "Ошибка");
+                return rowResult;
+            }
+
+            return rowResult;
+        }
+
+        public Boolean checkUser(String login, String password)
+        {
+
+            DataRow rowUser = GetUser(login);
+
+            if (rowUser == null)
+                return false;
+
+            String strPassword = rowUser["passwd"].ToString();
+            if (password.Equals(strPassword))
+                return true;
+
+            return false;
+        }
+
+        public void MergeDataSet( DataSet ds)
+        {
+            try
+            {
+                sprSet.Merge(ds);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Ошибка");
+            }
+        }
+
+        public DataSet GetDataSet()
+        {
+            return sprSet;
+        }
+    }
+ 
+}

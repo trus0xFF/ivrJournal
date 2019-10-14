@@ -1,0 +1,434 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ivrJournal</RootNamespace>
+    <AssemblyName>ivrJournal</AssemblyName>
+    <ApplicationIcon>dude.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\xaos\обмен\!Soft\Дневник ИВР\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Excel, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\xaos\обмен\!Soft\Контроль\Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Word, Version=8.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\xaos\обмен\!Soft\Контроль\Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="akusDbConnect.cs" />
+    <Compile Include="AkusTransferForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AkusTransferForm.Designer.cs">
+      <DependentUpon>AkusTransferForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildDBConnect.cs" />
+    <Compile Include="ChildKartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildKartForm.Designer.cs">
+      <DependentUpon>ChildKartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseDepartmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseDepartmentForm.Designer.cs">
+      <DependentUpon>ChooseDepartmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetBandP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetBandP.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetDIVR.cs">
+      <DependentUpon>DataSetDIVR.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetDIVR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetDIVR.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBConDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBConDialog.Designer.cs">
+      <DependentUpon>DBConDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditUserRolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUserRolForm.Designer.cs">
+      <DependentUpon>EditUserRolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeForm.Designer.cs">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControlManager.cs" />
+    <Compile Include="GetDictSprForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetDictSprForm.Designer.cs">
+      <DependentUpon>GetDictSprForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IniParser.cs" />
+    <Compile Include="ivrCalendar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IVRReceiveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IVRReceiveForm.Designer.cs">
+      <DependentUpon>IVRReceiveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IVRShared.cs" />
+    <Compile Include="IVRTransfer.cs" />
+    <Compile Include="IVRTransferForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IVRTransferForm.Designer.cs">
+      <DependentUpon>IVRTransferForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KartArchiveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KartArchiveForm.Designer.cs">
+      <DependentUpon>KartArchiveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KartForm.Designer.cs">
+      <DependentUpon>KartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainDBConnect.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyDataGridView .cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfileForm.Designer.cs">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePsychoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfilePsychoForm.Designer.cs">
+      <DependentUpon>ProfilePsychoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AkusTransferForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AkusTransferForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildKartForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ChildKartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseDepartmentForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ChooseDepartmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBConDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DBConDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUserRolForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditUserRolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetDictSprForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GetDictSprForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IVRReceiveForm.resx">
+      <DependentUpon>IVRReceiveForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IVRTransferForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>IVRTransferForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KartArchiveForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>KartArchiveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KartForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>KartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.ru.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfileForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfilePsychoForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProfilePsychoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PsychoListForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PsychoListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepBonusAndPenaltyForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RepBonusAndPenaltyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepDIVRForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RepDIVRForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepListForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RepListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportBandP.rdlc" />
+    <EmbeddedResource Include="ReportIVR.rdlc" />
+    <EmbeddedResource Include="SprControls.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SprControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SprForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SprForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SprProfilactForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SprProfilactForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="DataSetDIVR.xsc">
+      <DependentUpon>DataSetDIVR.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetDIVR.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetDIVR.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetDIVR.xss">
+      <DependentUpon>DataSetDIVR.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PsychoListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PsychoListForm.Designer.cs">
+      <DependentUpon>PsychoListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RepBonusAndPenaltyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RepBonusAndPenaltyForm.Designer.cs">
+      <DependentUpon>RepBonusAndPenaltyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RepDIVRForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RepDIVRForm.Designer.cs">
+      <DependentUpon>RepDIVRForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RepListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RepListForm.Designer.cs">
+      <DependentUpon>RepListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsWordClass.cs" />
+    <Compile Include="SprDbConnect.cs" />
+    <Compile Include="SprControls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SprControls.Designer.cs">
+      <DependentUpon>SprControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SprForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SprForm.Designer.cs">
+      <DependentUpon>SprForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SprProfilactForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SprProfilactForm.Designer.cs">
+      <DependentUpon>SprProfilactForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SQLDBConnect.cs" />
+    <Compile Include="SQLDBConnectLite.cs" />
+    <Compile Include="UpdateUnit.cs" />
+    <Compile Include="UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dude.ico" />
+    <Content Include="IconBook.ico" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="DataSetBandP.xsc">
+      <DependentUpon>DataSetBandP.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBandP.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBandP.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetBandP.xss">
+      <DependentUpon>DataSetBandP.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\book.png" />
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

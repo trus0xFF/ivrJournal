@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ivrJournal", "ivrJournal\ivrJournal.csproj", "{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IVR installer", "IVR installer\IVR installer.vdproj", "{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Debug|x64.ActiveCfg = Debug|x64
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Debug|x64.Build.0 = Debug|x64
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Debug|x86.ActiveCfg = Debug|x86
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Debug|x86.Build.0 = Debug|x86
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Release|x64.ActiveCfg = Release|x64
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Release|x64.Build.0 = Release|x64
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Release|x86.ActiveCfg = Release|x86
+		{419BCDF0-CFC3-4AEF-B836-5B7293AEFDBB}.Release|x86.Build.0 = Release|x86
+		{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}.Debug|Any CPU.ActiveCfg = Debug
+		{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}.Debug|x64.ActiveCfg = Debug
+		{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}.Debug|x64.Build.0 = Debug
+		{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}.Debug|x86.ActiveCfg = Debug
+		{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}.Debug|x86.Build.0 = Debug
+		{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}.Release|Any CPU.ActiveCfg = Release
+		{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}.Release|x64.ActiveCfg = Release
+		{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}.Release|x64.Build.0 = Release
+		{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}.Release|x86.ActiveCfg = Release
+		{027FDD69-CC8B-4FA0-BE49-1F06CA7895BF}.Release|x86.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
